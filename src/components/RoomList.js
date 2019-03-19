@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 
 class RoomList extends Component {
@@ -6,7 +6,6 @@ class RoomList extends Component {
     super(props);
     this.state = {
       rooms: [],
-      value: ''
     };
   this.roomsRef = this.props.firebase.database().ref('rooms');
 }
@@ -17,19 +16,22 @@ componentDidMount() {
        const room = snapshot.val();
        room.key = snapshot.key();
        this.setState({ rooms: this.state.rooms.concat( room ) })
+       console.log(snapshot.val());
      });
    }
 
 render() {
   return(
+
     <ul>
       this.state.rooms.map((rooms) =>
-        <li>
+        <li className="room" >
           {room.name}
         </li>
       )}
     </ul>
-  );
+  )
+ }
 }
 
 export default RoomList;
