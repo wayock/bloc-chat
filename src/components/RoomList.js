@@ -25,7 +25,7 @@ render() {
 
     <ul>
       {this.state.rooms.map((room) =>
-        <li className="room" >
+        <li className="room" key={room.key}>
           {room.name}
         </li>
       )}
