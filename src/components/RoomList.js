@@ -54,7 +54,7 @@ render() {
       </ul>
       <form onSubmit={(e) => this.createRoom(e)}>
         <input type="text" value={this.state.name} onChange={ (e) => this.handleChange(e) } />
-        <input type="submit" />
+        <input type="submit" value="New Room" />
       </form>
     </div>
   )
