@@ -8,9 +8,13 @@ class MessageList extends Component {
     super(props);
     this.state = {
       messages: [],
+      roomMesages: [],
       value: "",
     };
   this.messagesRef = this.props.firebase.database().ref('messages');
+  this.activeRoom = this.props.activeRoom;
+  this.handleChange = this.handleChange.bind(this);
+
 }
 
 componentDidMount() {
@@ -39,6 +43,20 @@ filteredMessages(){
   })
 }
 
+handleChange(e) {
+   this.setState({ value: e.target.value });
+   e.preventDefault();
+
+ }
+
+ onSubmit(e) {
+     this.messageRef.push({
+       message: this.state.value
+     });
+     this.setState({value: ""})
+     e.preventDefault();
+   }
+
 render() {
   return (
     <div>
@@ -47,7 +65,10 @@ render() {
           <li key={roomId}>{message.content} </li>
         ))}
       </div>
-      <p>Messages will go here</p>
+      <form onSubmit={(e) => this.createMessage(e)}>
+        <input type="text" value={this.state.value} onChange={ (e) => this.handleChange(e) } />
+        <input type="submit" value="Send" />
+      </form>
     </div>
   )
  }
