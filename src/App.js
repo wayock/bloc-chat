@@ -17,17 +17,35 @@ import MessageList from './components/MessageList';
   firebase.initializeApp(config);
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      rooms: [],
+      activeRoom: ""
+    };
+  }
+
+  setRoom = (roomKey) => {
+    this.setState({
+      activeRoom: roomKey
+    })
+    console.log(roomKey);
+  }
+
   render() {
     return (
       <div className="App">
         <aside>
           <RoomList
           firebase = {firebase}
+          setRoom={this.setRoom}
           />
         </aside>
         <main>
           <MessageList
           firebase = {firebase}
+          activeRoom={this.state.activeRoom}
           />
         </main>
       </div>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import * as firebase from 'firebase';
+
 
 
 class MessageList extends Component {
@@ -21,17 +23,30 @@ componentDidMount() {
    }
 
 
-/*createnewmessage
+createMessage(e) {
+  this.messageRef.push ({
   username: "<USERNAME HERE>",
-  content: "<CONTENT OF THE MESSAGE HERE>",
+  content: this.state.value,
   sentAt: firebase.database.ServerValue.TIMESTAMP,
-  roomId: "<ROOM UID HERE>"
-*/
+  roomId: this.props.activeRoom.key,
+  })
+}
+
+
+filteredMessages(){
+  return this.state.messages.filter((message) => {
+    return message.roomId === this.props.activeRoom.key;
+  })
+}
 
 render() {
   return (
     <div>
-      <h1>Active Room Name</h1>
+      <div>
+        {this.filteredMessages().map((message, roomId) => (
+          <li key={roomId}>{message.content} </li>
+        ))}
+      </div>
       <p>Messages will go here</p>
     </div>
   )
