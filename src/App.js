@@ -39,7 +39,7 @@ class App extends Component {
         <aside>
           <RoomList
           firebase = {firebase}
-          setRoom={this.setRoom}
+          setRoom={this.setRoom.bind(this)}
           />
         </aside>
         <main>

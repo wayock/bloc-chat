@@ -28,11 +28,20 @@ componentDidMount() {
 
 
 createMessage(e) {
+  
+  console.log("DEBUG: MessageList#createMessage");
+  console.log(this.props.activeRoom.key);
+  console.log("---------\n\n");
+  this.messagesRef.push({
+    ...
+  });
+
+  e.preventDefault();
   this.messagesRef.push ({
   username: "<USERNAME HERE>",
   content: this.state.value,
   sentAt: firebase.database.ServerValue.TIMESTAMP,
-  roomId: this.props.activeRoom,
+  roomId: this.props.activeRoom.key,
   })
 }
 
