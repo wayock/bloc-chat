@@ -47,7 +47,7 @@ render() {
       <h1>Bloc Chat</h1>
       <ul>
         {this.state.rooms.map((room) =>
-          <li className="room" key={room.key} onClick = {() => this.props.setRoom(room.key)}>
+          <li className="room" key={room.key} onClick = {() => this.props.setRoom(room)}>
             {room.name}
           </li>
         )}

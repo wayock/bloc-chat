@@ -26,11 +26,11 @@ class App extends Component {
     };
   }
 
-  setRoom = (roomKey) => {
+  setRoom = (room) => {
     this.setState({
-      activeRoom: roomKey
+      activeRoom: room
     })
-    console.log(roomKey);
+    console.log(room);
   }
 
   render() {

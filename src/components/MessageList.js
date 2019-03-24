@@ -32,14 +32,14 @@ createMessage(e) {
   username: "<USERNAME HERE>",
   content: this.state.value,
   sentAt: firebase.database.ServerValue.TIMESTAMP,
-  roomId: this.props.activeRoom.key,
+  roomId: this.props.activeRoom,
   })
 }
 
 
 filteredMessages(message){
   return this.state.messages.filter((message) => {
-    return message.roomId === this.props.activeRoom.key;
+    return message.roomId === this.props.activeRoom;
   })
 }
 
