@@ -28,7 +28,7 @@ componentDidMount() {
 
 
 createMessage(e) {
-  this.messageRef.push ({
+  this.messagesRef.push ({
   username: "<USERNAME HERE>",
   content: this.state.value,
   sentAt: firebase.database.ServerValue.TIMESTAMP,
@@ -37,7 +37,7 @@ createMessage(e) {
 }
 
 
-filteredMessages(){
+filteredMessages(message){
   return this.state.messages.filter((message) => {
     return message.roomId === this.props.activeRoom.key;
   })
