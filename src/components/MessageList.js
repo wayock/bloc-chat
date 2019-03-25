@@ -14,6 +14,7 @@ class MessageList extends Component {
   this.messagesRef = this.props.firebase.database().ref('messages');
   this.activeRoom = this.props.activeRoom;
   this.handleChange = this.handleChange.bind(this);
+  this.sessionRef = this.props.firebase.database().ref('sessions');
 
 }
 
@@ -28,20 +29,17 @@ componentDidMount() {
 
 
 createMessage(e) {
-  
+
   console.log("DEBUG: MessageList#createMessage");
-  console.log(this.props.activeRoom.key);
+  console.log(this.props.activeRoom);
   console.log("---------\n\n");
-  this.messagesRef.push({
-    ...
-  });
 
   e.preventDefault();
   this.messagesRef.push ({
-  username: "<USERNAME HERE>",
+  username: "Name",
   content: this.state.value,
   sentAt: firebase.database.ServerValue.TIMESTAMP,
-  roomId: this.props.activeRoom.key,
+  roomId: this.props.activeRoom,
   })
 }
 
@@ -71,7 +69,9 @@ render() {
     <div>
       <div>
         {this.filteredMessages().map((message, roomId) => (
-          <li key={roomId}>{message.content} </li>
+          <li key={roomId}>
+            <div> {message.username}  {message.content} </div>
+          </li>
         ))}
       </div>
       <form onSubmit={(e) => this.createMessage(e)}>
