@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import './App.css';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 
 
   // Initialize Firebase
@@ -33,6 +34,11 @@ class App extends Component {
     console.log(room);
   }
 
+  setUser = (user) => {
+    this.setUser({ user });
+    console.log(user);
+  }
+
   render() {
     return (
       <div className="App">
@@ -42,6 +48,11 @@ class App extends Component {
           setRoom={this.setRoom.bind(this)}
           />
         </aside>
+        <header>
+          < User
+          firebase = {firebase}
+          />
+        </header>
         <main>
           <MessageList
           firebase = {firebase}
