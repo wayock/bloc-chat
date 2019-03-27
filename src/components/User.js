@@ -28,6 +28,9 @@ signOutWithPopup() {
 render() {
   return (
     <div>
+      <div>
+        {this.props.user ? this.props.user.displayName : "Guest"}
+      </div>
       <button onClick={this.signInWithPopup}>
       Sign In
       </button>

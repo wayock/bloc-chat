@@ -50,6 +50,7 @@ class App extends Component {
         </aside>
         <header>
           < User
+          user = {this.props.user}
           firebase = {firebase}
           />
         </header>
