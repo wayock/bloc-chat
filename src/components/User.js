@@ -13,6 +13,7 @@ class User extends Component {
 componentDidMount() {
     this.props.firebase.auth().onAuthStateChanged( user => {
       this.props.setUser(user);
+      console.log(this.props.user);
     });
   }
 
@@ -24,6 +25,7 @@ signInWithPopup() {
 signOutWithPopup() {
   this.props.firebase.auth().signOut();
 }
+
 
 render() {
   return (
