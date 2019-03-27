@@ -34,10 +34,10 @@ class App extends Component {
     console.log(room);
   }
 
-  setUser = (user) => {
-    this.setUser({ user });
-    console.log(user);
-  }
+  setUser(user){
+      this.setUser({ user });
+      console.log(user);
+    }
 
   render() {
     return (
@@ -51,7 +51,7 @@ class App extends Component {
         <header>
           < User
           user = {this.props.user}
-          setUser = {this.props.setUser}
+          setUser = {this.setUser.bind(this)}
           firebase = {firebase}
           />
         </header>
