@@ -23,7 +23,8 @@ class App extends Component {
     super(props);
     this.state = {
       rooms: [],
-      activeRoom: ""
+      activeRoom: "",
+      user: ""
     };
   }
 
@@ -35,7 +36,7 @@ class App extends Component {
   }
 
   setUser(user){
-      this.setUser({ user });
+      this.setState({ user: user });
       console.log(user);
     }
 
@@ -50,9 +51,9 @@ class App extends Component {
         </aside>
         <header>
           < User
-          user = {this.props.user}
-          setUser = {this.setUser.bind(this)}
           firebase = {firebase}
+          setUser = {this.setUser.bind(this)}
+          user = {this.state.user}
           />
         </header>
         <main>

@@ -41,7 +41,10 @@ createMessage(e) {
   content: this.state.value,
   sentAt: firebase.database.ServerValue.TIMESTAMP,
   roomId: this.props.activeRoom,
-  })
+  });
+    this.setState({
+     content: "",
+   });
 }
 
 

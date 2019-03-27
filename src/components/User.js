@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import * as firebase from 'firebase';
+
 
 
 class User extends Component {
-  constructor(props) {
-    super(props);
 
-    this.signInWithPopup = this.signInWithPopup(this);
-    this.signOutWithPopup = this.signOutWithPopup(this);
-}
 
 componentDidMount() {
     this.props.firebase.auth().onAuthStateChanged( user => {
@@ -22,7 +17,7 @@ signInWithPopup() {
   this.props.firebase.auth().signInWithPopup( provider );
 }
 
-signOutWithPopup() {
+signOut() {
   this.props.firebase.auth().signOut();
 }
 
@@ -33,10 +28,10 @@ render() {
       <div>
         {this.props.user ? this.props.user.displayName : "Guest"}
       </div>
-      <button onClick={this.signInWithPopup}>
+      <button onClick={() => this.signInWithPopup()}>
       Sign In
       </button>
-      <button onClick={this.signOutWithPopup}>
+      <button onClick={() => this.signOut()}>
         Sign Out
       </button>
     </div>
