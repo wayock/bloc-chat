@@ -64,7 +64,7 @@ handleChange(e) {
      this.messageRef.push({
        message: this.state.value
      });
-     
+
    }
 
 render() {

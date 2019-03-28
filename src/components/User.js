@@ -27,13 +27,12 @@ render() {
     <div>
       <div>
         {this.props.user ? this.props.user.displayName : "Guest"}
+
+      {this.props.user ?
+        <button onClick={() => this.signOut()}> Sign Out </button>
+        :
+        <button onClick={() => this.signInWithPopup()}> Sign In </button>}
       </div>
-      <button onClick={() => this.signInWithPopup()}>
-      Sign In
-      </button>
-      <button onClick={() => this.signOut()}>
-        Sign Out
-      </button>
     </div>
   )
 }
