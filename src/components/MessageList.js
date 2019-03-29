@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 
 
-
 class MessageList extends Component {
   constructor(props) {
     super(props);
@@ -62,13 +61,13 @@ handleChange(e) {
        message: this.state.value,
      });
 
-console.log(this.props.activeRoom);
    }
 
 render() {
+
   return (
     <div>
-      <h2>{this.activeRoom}</h2>
+      <h2>{this.props.activeRoom}</h2>
       <div>
         {this.filteredMessages().map((message, roomId) => (
           <li key={roomId}>
