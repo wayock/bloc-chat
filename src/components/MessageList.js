@@ -37,7 +37,7 @@ createMessage(e) {
 
   e.preventDefault();
   this.messagesRef.push ({
-  username: this.state.username,
+  username: this.state.user,
   content: this.state.value,
   sentAt: firebase.database.ServerValue.TIMESTAMP,
   roomId: this.props.activeRoom,
@@ -62,7 +62,8 @@ handleChange(e) {
 
  onSubmit(e) {
      this.messageRef.push({
-       message: this.state.value
+       message: this.state.value,
+      
      });
 
    }
@@ -73,7 +74,7 @@ render() {
       <div>
         {this.filteredMessages().map((message, roomId) => (
           <li key={roomId}>
-            <div> {message.username}  {message.content} </div>
+            <div> {message.username} : {message.content} </div>
           </li>
         ))}
       </div>
