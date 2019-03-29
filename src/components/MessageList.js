@@ -31,17 +31,14 @@ componentDidMount() {
 
 createMessage(e) {
 
-  console.log("DEBUG: MessageList#createMessage");
-  console.log(this.props.activeRoom);
-  console.log("---------\n\n");
-
   e.preventDefault();
+  console.log(this.props.user);
   this.messagesRef.push ({
-  username: this.state.user,
+  username: this.props.user.displayName,
   content: this.state.value,
   sentAt: firebase.database.ServerValue.TIMESTAMP,
   roomId: this.props.activeRoom,
-  });
+  })
     this.setState({
      content: "",
    });
@@ -63,8 +60,10 @@ handleChange(e) {
  onSubmit(e) {
      this.messageRef.push({
        message: this.state.value,
-      
      });
+     this.setState({
+      content: "",
+    });
 
    }
 
@@ -74,7 +73,7 @@ render() {
       <div>
         {this.filteredMessages().map((message, roomId) => (
           <li key={roomId}>
-            <div> {message.username} : {message.content} </div>
+            <div> {message.username} : {message.content} {new Date(message.sentAt).toLocaleString('en-US', { timeZone: 'America/New_York' })} </div>
           </li>
         ))}
       </div>
