@@ -40,7 +40,7 @@ createMessage(e) {
   roomId: this.props.activeRoom,
   })
     this.setState({
-     content: "",
+     value: "",
    });
 }
 
@@ -61,15 +61,14 @@ handleChange(e) {
      this.messageRef.push({
        message: this.state.value,
      });
-     this.setState({
-      content: "",
-    });
 
+console.log(this.props.activeRoom);
    }
 
 render() {
   return (
     <div>
+      <h2>{this.activeRoom}</h2>
       <div>
         {this.filteredMessages().map((message, roomId) => (
           <li key={roomId}>
