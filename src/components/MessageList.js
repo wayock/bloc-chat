@@ -67,7 +67,7 @@ render() {
 
   return (
     <div>
-      <h2>{this.props.activeRoom}</h2>
+      <h2>{this.props.activeRoom.name}</h2>
       <div>
         {this.filteredMessages().map((message, roomId) => (
           <li key={roomId}>
