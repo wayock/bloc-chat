@@ -36,7 +36,7 @@ createMessage(e) {
   username: this.props.user.displayName,
   content: this.state.value,
   sentAt: firebase.database.ServerValue.TIMESTAMP,
-  roomId: this.props.activeRoom,
+  roomId: this.props.activeRoom.key,
   })
     this.setState({
      value: "",
@@ -46,7 +46,7 @@ createMessage(e) {
 
 filteredMessages(message){
   return this.state.messages.filter((message) => {
-    return message.roomId === this.props.activeRoom;
+    return message.roomId === this.props.activeRoom.key;
   })
 }
 
