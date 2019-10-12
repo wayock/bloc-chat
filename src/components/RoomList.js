@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Form from 'react-bootstrap/Form'
+import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
 
 
 class RoomList extends Component {
@@ -46,6 +47,8 @@ handleChange(e) {
 render() {
   return(
     <div>
+    <Card className="text-center bg-light">
+      <h1> </h1>
       <h2>Chat Rooms</h2>
       <Form id="newChat" center onSubmit={(e) => this.createRoom(e)}>
         <input type="text" value={this.state.name} onChange={ (e) => this.handleChange(e) } />
@@ -61,7 +64,7 @@ render() {
         )}
       </ul>
 
-
+    </Card>
     </div>
   )
  }

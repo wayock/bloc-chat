@@ -51,3 +51,7 @@ li {
 ul {
   list-style-type: none;
 }
+
+#user {
+  justify-content: left;
+}

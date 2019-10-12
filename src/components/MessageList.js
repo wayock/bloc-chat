@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
+import Card from 'react-bootstrap/Card'
 
 
 
@@ -69,20 +70,26 @@ render() {
   return (
 
       <div>
-          <h2>{this.props.activeRoom.name}</h2>
-          <div>
-            {this.filteredMessages().map((message, roomId) => (
-              <li key={roomId}>
-                <div> {message.username} : {message.content} {new Date(message.sentAt).toLocaleString('en-US', { timeZone: 'America/New_York' })} </div>
-              </li>
-            ))}
-          </div>
-          <form onSubmit={(e) => this.createMessage(e)}>
-            <input type="text" value={this.state.value} onChange={ (e) => this.handleChange(e) } />
-            <input type="submit" value="Send" />
-          </form>
+      <Card className="text-center" >
+        <Card.Header> <h2>{this.props.activeRoom.name}</h2> </Card.Header>
+        <Card.Body>
+            <div>
+              {this.filteredMessages().map((message, roomId) => (
+                <li key={roomId}>
+                  <div> {message.username} : {message.content} {new Date(message.sentAt).toLocaleString('en-US', { timeZone: 'America/New_York' })} </div>
+                </li>
+              ))}
+            </div>
+        </Card.Body>
+        <Card.Footer>
+            <form onSubmit={(e) => this.createMessage(e)}>
+              <input type="text" value={this.state.value} onChange={ (e) => this.handleChange(e) } />
+              <input type="submit" value="Send" />
+            </form>
+        </Card.Footer>
+      </Card>
       </div>
-    
+
   )
  }
 }

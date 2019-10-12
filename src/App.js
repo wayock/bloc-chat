@@ -46,24 +46,27 @@ class App extends Component {
     return (
 
       <div className="App">
-        <Jumbotron fluid>
+        <Jumbotron fluid className="bg-secondary text-white">
           <h1>Bloc Chat</h1>
           <ion-icon name="chatbubbles"></ion-icon>
-          <p>Chat, Learn, Connect.</p>
+          <h3>Chat, Learn, Connect.</h3>
         </Jumbotron>
+
+
+
         <aside>
-          <RoomList
-          firebase = {firebase}
-          setRoom={this.setRoom.bind(this)}
-          />
-        </aside>
-        <header>
           < User
-          firebase = {firebase}
-          setUser = {this.setUser.bind(this)}
-          user = {this.state.user}
+            firebase = {firebase}
+            setUser = {this.setUser.bind(this)}
+            user = {this.state.user}
           />
-        </header>
+          
+          <RoomList
+            firebase = {firebase}
+            setRoom={this.setRoom.bind(this)}
+            />
+          </aside>
+
         <main>
           <MessageList
           firebase = {firebase}
