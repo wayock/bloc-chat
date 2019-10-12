@@ -4,6 +4,8 @@ import './App.css';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
 import User from './components/User';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Jumbotron from 'react-bootstrap/Jumbotron'
 
 
   // Initialize Firebase
@@ -42,7 +44,13 @@ class App extends Component {
 
   render() {
     return (
+
       <div className="App">
+        <Jumbotron fluid>
+          <h1>Bloc Chat</h1>
+          <ion-icon name="chatbubbles"></ion-icon>
+          <p>Chat, Learn, Connect.</p>
+        </Jumbotron>
         <aside>
           <RoomList
           firebase = {firebase}

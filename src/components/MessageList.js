@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 
 
+
 class MessageList extends Component {
   constructor(props) {
     super(props);
@@ -66,20 +67,22 @@ handleChange(e) {
 render() {
 
   return (
-    <div>
-      <h2>{this.props.activeRoom.name}</h2>
+
       <div>
-        {this.filteredMessages().map((message, roomId) => (
-          <li key={roomId}>
-            <div> {message.username} : {message.content} {new Date(message.sentAt).toLocaleString('en-US', { timeZone: 'America/New_York' })} </div>
-          </li>
-        ))}
+          <h2>{this.props.activeRoom.name}</h2>
+          <div>
+            {this.filteredMessages().map((message, roomId) => (
+              <li key={roomId}>
+                <div> {message.username} : {message.content} {new Date(message.sentAt).toLocaleString('en-US', { timeZone: 'America/New_York' })} </div>
+              </li>
+            ))}
+          </div>
+          <form onSubmit={(e) => this.createMessage(e)}>
+            <input type="text" value={this.state.value} onChange={ (e) => this.handleChange(e) } />
+            <input type="submit" value="Send" />
+          </form>
       </div>
-      <form onSubmit={(e) => this.createMessage(e)}>
-        <input type="text" value={this.state.value} onChange={ (e) => this.handleChange(e) } />
-        <input type="submit" value="Send" />
-      </form>
-    </div>
+    
   )
  }
 }

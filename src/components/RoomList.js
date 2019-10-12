@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListGroup from 'react-bootstrap/ListGroup'
 
 
 class RoomList extends Component {
@@ -44,7 +45,7 @@ handleChange(e) {
 render() {
   return(
     <div>
-      <h1>Bloc Chat</h1>
+      <h2>Chat Rooms</h2>
       <ul>
         {this.state.rooms.map((room) =>
           <li className="room" key={room.key} onClick = {() => this.props.setRoom(room)}>
