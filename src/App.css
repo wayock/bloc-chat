@@ -44,6 +44,10 @@ li {
   list-style-type: none;
 }
 
+#newChat {
+  margin: 40px;
+}
+
 ul {
   list-style-type: none;
 }

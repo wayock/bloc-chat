@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ListGroup from 'react-bootstrap/ListGroup'
+import ListGroup from 'react-bootstrap/ListGroup';
+import Form from 'react-bootstrap/Form'
 
 
 class RoomList extends Component {
@@ -46,17 +47,21 @@ render() {
   return(
     <div>
       <h2>Chat Rooms</h2>
+      <Form id="newChat" center onSubmit={(e) => this.createRoom(e)}>
+        <input type="text" value={this.state.name} onChange={ (e) => this.handleChange(e) } />
+        <input type="submit" value="Create New Room" />
+      </Form>
       <ul>
         {this.state.rooms.map((room) =>
-          <li className="room" key={room.key} onClick = {() => this.props.setRoom(room)}>
-            {room.name}
-          </li>
+          <ListGroup>
+            <ListGroup.Item action><li className="room" key={room.key} onClick = {() => this.props.setRoom(room)}>
+              {room.name}
+            </li></ListGroup.Item>
+          </ListGroup>
         )}
       </ul>
-      <form onSubmit={(e) => this.createRoom(e)}>
-        <input type="text" value={this.state.name} onChange={ (e) => this.handleChange(e) } />
-        <input type="submit" value="New Room" />
-      </form>
+
+
     </div>
   )
  }
