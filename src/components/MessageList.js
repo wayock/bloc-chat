@@ -33,16 +33,17 @@ componentDidMount() {
 createMessage(e) {
 
   e.preventDefault();
-  console.log(this.props.user);
-  this.messagesRef.push ({
-  username: this.props.user.displayName,
-  content: this.state.value,
-  sentAt: firebase.database.ServerValue.TIMESTAMP,
-  roomId: this.props.activeRoom.key,
-  })
-    this.setState({
-     value: "",
-   });
+  if (this.props.user){
+    this.messagesRef.push ({
+    username: this.props.user.displayName,
+    content: this.state.value,
+    sentAt: firebase.database.ServerValue.TIMESTAMP,
+    roomId: this.props.activeRoom.key,
+    })
+      this.setState({
+       value: "",
+     });
+  }
 }
 
 
@@ -81,12 +82,16 @@ render() {
               ))}
             </div>
         </Card.Body>
+        { this.props.user &&
         <Card.Footer>
             <form onSubmit={(e) => this.createMessage(e)}>
               <input type="text" value={this.state.value} onChange={ (e) => this.handleChange(e) } />
               <input type="submit" value="Send" />
             </form>
-        </Card.Footer>
+        </Card.Footer> }
+        { !this.props.user && this.props.activeRoom &&
+          <div> Login to send messages. </div>
+        }
       </Card>
       </div>
 
