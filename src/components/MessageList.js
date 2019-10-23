@@ -90,7 +90,7 @@ render() {
             </form>
         </Card.Footer> }
         { !this.props.user && this.props.activeRoom &&
-          <div> Login to send messages. </div>
+          <h5> You must Sign In to send messages. </h5>
         }
       </Card>
       </div>
